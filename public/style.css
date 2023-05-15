@@ -152,10 +152,11 @@ body {
   display: flex;
 }
 
-.chat-screen .typebox input {
+.chat-screen .typebox textarea {
   flex: 1;
   height: 50px;
   font-size: 18px;
+  resize: vertical;
 }
 
 .chat-screen .typebox button {
