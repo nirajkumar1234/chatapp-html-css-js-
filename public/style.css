@@ -155,8 +155,10 @@ body {
 .chat-screen .typebox textarea {
   flex: 1;
   height: 50px;
-  font-size: 18px;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   resize: vertical;
+  padding: 5px;
 }
 
 .chat-screen .typebox button {
