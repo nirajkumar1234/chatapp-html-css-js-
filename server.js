@@ -7,11 +7,11 @@ app.use(express.static(path.join(__dirname + "/public")));
 
 io.on("connection", function (socket) {
     socket.on("newuser", function (username) {
-        socket.broadcast.emit("update", username + " joined the conversation");
+        socket.broadcast.emit("update", username + " joined the conversation (" + new Date().toDateString().replace(" ", ":").replace(" ", ":").replace(" ", ":") + ")");
     });
 
     socket.on("exituser", function (username) {
-        socket.broadcast.emit("update", username + " exit the conversation");
+        socket.broadcast.emit("update", username + " exit the conversation (" + new Date().toDateString().replace(" ", ":").replace(" ", ":").replace(" ", ":") + ")");
     });
 
     let typingUsers = new Set();
