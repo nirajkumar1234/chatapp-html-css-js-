@@ -83,7 +83,7 @@
             el.setAttribute("class", "message my-message")
             el.innerHTML = `
                 <div>
-                    <div class="name">${message.username}</div>
+                    <div class="name">${`${message.username} <span style="color:black;font-size:12px;"> (${new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours()}:${new Date().getMinutes()} ${new Date().getHours() > 12 ? "pm" : "am"})  </span>`}</div>
                     
                     <div class="text">${message.text}</div>
                 </div>
@@ -96,7 +96,7 @@
             el.setAttribute("class", "message other-message")
             el.innerHTML = `
                 <div>
-                    <div class="name">${message.username}</div>
+                    <div class="name">${`${message.username} <span style="color:black;font-size:12px;"> (${new Date().getHours() > 12 ? new Date().getHours() - 12 : new Date().getHours()}:${new Date().getMinutes()} ${new Date().getHours() > 12 ? "pm" : "am"}) </span>`} </div>
                     
                     <div class="text">${message.text}</div>
                 </div>
