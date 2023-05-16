@@ -1,7 +1,10 @@
+
 (function () {
     const app = document.querySelector(".app")
     const socket = io();
     let uname;
+    let typing = false;
+
     app.querySelector("#join-user").addEventListener("click", function () {
         let username = app.querySelector("#username").value;
         if (username.length == 0) {
@@ -15,6 +18,19 @@
         app.querySelector(".chat-screen").classList.add("active")
     })
 
+    app.querySelector("#message-input").addEventListener("input", function () {
+        if (!typing) {
+            typing = true;
+            socket.emit("typing", uname);
+        }
+    });
+
+    app.querySelector("#message-input").addEventListener("blur", function () {
+        if (typing) {
+            typing = false;
+            socket.emit("stop-typing", uname);
+        }
+    });
 
     app.querySelector("#send-message").addEventListener("click", function () {
         let message = app.querySelector("#message-input").value;
@@ -45,6 +61,20 @@
     socket.on("chat", function (message) {
         renderMessage("other", message);
     })
+
+    socket.on("typing", function (username) {
+        let el = document.createElement("div");
+        el.setAttribute("class", "typing");
+        el.innerHTML = `${username} is typing...`;
+        app.querySelector(".messages").appendChild(el);
+    });
+
+    socket.on("stop-typing", function (username) {
+        let typingEl = app.querySelector(".typing");
+        if (typingEl) {
+            typingEl.remove();
+        }
+    });
 
     function renderMessage(type, message) {
         let messageContainer = app.querySelector(".messages")
@@ -86,3 +116,9 @@
 
     }
 })();
+const form = document.querySelector('.typebox');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent form from refreshing the page
+    // your code to handle form submission goes here
+});
