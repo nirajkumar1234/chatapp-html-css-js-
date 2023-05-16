@@ -171,3 +171,40 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.typing {
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  margin-top: 5px;
+  animation: typing-dot 1s linear infinite;
+  font-style: italic;
+  font-size: 13px;
+}
+
+@keyframes typing-dot {
+  from,
+  to {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+#image-sharing {
+  height: 100%;
+  border: 1px solid #eee;
+  color: white;
+  display: none;
+}
+.image-sharing {
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
