@@ -4,7 +4,7 @@
     const socket = io();
     let uname;
     let typing = false;
-
+    var audio = new Audio('./ting.mp3');
     app.querySelector("#join-user").addEventListener("click", function () {
         let username = app.querySelector("#username").value;
         if (username.length == 0) {
@@ -92,6 +92,9 @@
             messageContainer.appendChild(el);
         }
         else if (type == "other") {
+            audio.play().catch(err => {
+                console.log("Error " + err)
+            })
             let el = document.createElement("div")
             el.setAttribute("class", "message other-message")
             el.innerHTML = `
@@ -119,6 +122,5 @@
 const form = document.querySelector('.typebox');
 
 form.addEventListener('submit', function (e) {
-    e.preventDefault(); // prevent form from refreshing the page
-    // your code to handle form submission goes here
+    e.preventDefault();
 });
